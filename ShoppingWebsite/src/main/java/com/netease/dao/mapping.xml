@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.dao.mapping">
+	<select id="getUser" parameterType="int"
+		resultType="com.netease.entity.User">
+		select *
+		from users where id=#{id}
+	</select>
+	<insert id="insertContent"
+		parameterType="com.netease.entity.Content" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into contents(title, summary,image, file, detail,
+		price)
+		values(#{title}, #{summary}, #{image},
+		#{file},#{detail},
+		#{price})
+	</insert>
+</mapper>
