@@ -10,9 +10,13 @@
 		parameterType="com.netease.entity.Content" useGeneratedKeys="true"
 		keyProperty="id">
 		insert into contents(title, summary,image, file, detail,
-		price)
+		price, sold)
 		values(#{title}, #{summary}, #{image},
 		#{file},#{detail},
-		#{price})
+		#{price}, #{sold})
 	</insert>
+	<select id="getContent" resultType="com.netease.entity.Content">
+		select *
+		from contents
+	</select>
 </mapper>

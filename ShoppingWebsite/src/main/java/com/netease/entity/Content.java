@@ -8,6 +8,15 @@ public class Content {
 	private String file;
 	private String detail;
 	private int price;
+	private boolean sold;
+
+	public boolean isSold() {
+		return sold;
+	}
+
+	public void setSold(boolean sold) {
+		this.sold = sold;
+	}
 
 	public Content() {
 

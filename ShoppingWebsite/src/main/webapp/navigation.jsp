@@ -13,14 +13,14 @@
 			</div>
 			<c:if test="${sessionScope.currentUser.getUsername()=='buyer'}">
 				<ul class="nav">
-					<li><a href="./index.jsp">首页</a></li>
+					<li><a href="./index.do">首页</a></li>
 					<li><a href="./account.jsp">账务</a></li>
 					<li><a href="./settleAccount.jsp">购物车</a></li>
 				</ul>
 			</c:if>
 			<c:if test="${sessionScope.currentUser.getUsername()=='seller'}">
 				<ul class="nav">
-					<li><a href="./index.jsp">首页</a></li>
+					<li><a href="./index.do">首页</a></li>
 					<li><a href="./public.jsp">发布</a></li>
 				</ul>
 			</c:if>
@@ -34,7 +34,7 @@
 				请<a href="./login.jsp">[登录]</a>
 			</div>
 			<ul class="nav">
-				<li><a href="./index.jsp">首页</a></li>
+				<li><a href="./index.do">首页</a></li>
 			</ul>
 		</div>
 	</div>

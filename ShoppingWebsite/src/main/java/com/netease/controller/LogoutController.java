@@ -10,9 +10,8 @@ public class LogoutController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("redirect:./index.do");
 		request.getSession().removeAttribute("currentUser");
-		modelAndView.setViewName("./index");
 		return modelAndView;
 	}
 

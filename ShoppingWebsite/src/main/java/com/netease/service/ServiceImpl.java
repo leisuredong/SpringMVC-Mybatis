@@ -1,6 +1,6 @@
 package com.netease.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.netease.dao.ContentDao;
 import com.netease.dao.ContentDaoImpl;
@@ -37,8 +37,15 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public ArrayList<Content> getContent() {
+	public List<Object> getContent() {
 		contentDao = ContentDaoImpl.getInstance();
 		return contentDao.getContent();
 	}
+
+	@Override
+	public boolean uploadPic(String path) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -20,7 +20,7 @@ public class LoginController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("Hello LoginController!");
 
-		ModelAndView modelView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 
 		String username = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -33,7 +33,7 @@ public class LoginController implements Controller {
 		String password_db = user.getPassword();
 		if (username_db.equals(username) && MD5.md5(password_db).equals(password)) {
 //			System.out.println("买家登录成功");
-			modelView.addObject("message", 1);
+			modelAndView.addObject("message", 1);
 			request.getSession().setAttribute("currentUser", user);
 		} else {
 			user = service.getUser(2);
@@ -41,15 +41,15 @@ public class LoginController implements Controller {
 			password_db = user.getPassword();
 			if (username_db.equals(username) && MD5.md5(password_db).equals(password)) {
 //				System.out.println("卖家登录成功");
-				modelView.addObject("message", 1);
+				modelAndView.addObject("message", 1);
 				request.getSession().setAttribute("currentUser", user);
 			} else {
 //				System.out.println("登录失败");
-				modelView.addObject("message", 0);
+				modelAndView.addObject("message", 0);
 			}
 		}
 
-		JSONObject json = JSONObject.fromObject(modelView.getModel());
+		JSONObject json = JSONObject.fromObject(modelAndView.getModel());
 		String strJson = json.toString();
 //		System.out.println(strJson);
 		PrintWriter writer = response.getWriter();

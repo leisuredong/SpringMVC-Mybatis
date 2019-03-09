@@ -56,14 +56,15 @@
 		            form.enctype = "multipart/form-data";
 
 		            var xhr = new XMLHttpRequest();
-		            xhr.open("post", "/api/upload", true);
+		            xhr.open("post", "./upload.do", true);
 		            xhr.onload = function () {
 		            	  if (xhr.status === 200) {
 		            	    alert("文件上传成功");
 		            	    var o = JSON.parse(xhr.responseText);
 		            	    imageUrl = o && o.result;
 		            	    image.value = imageUrl;
-		            	    imgpre.src = imageUrl;
+		            	    imgpre.src = "./resources/"+o.file;
+		            	    jQuery("#imgpre").load(location.href+" #imgpre");
 		            	  } else {
 		            	    alert('An error occurred!');
 		            	  }

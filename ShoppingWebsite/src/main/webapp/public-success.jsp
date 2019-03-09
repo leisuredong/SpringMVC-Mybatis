@@ -11,7 +11,7 @@
 		<div class="n-result">
 			<h3>发布成功！</h3>
 			<p>
-				<a href="/show?id=189">[查看内容]</a><a href="./index.jsp">[返回首页]</a>
+				<a href="/show?id=189">[查看内容]</a><a href="./index.do">[返回首页]</a>
 			</p>
 		</div>
 	</div>

@@ -4,6 +4,7 @@
 <head>
 <title>Shopping-Town</title>
 <link rel="stylesheet" type="text/css" href="./css/style.css">
+<script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<c:import url="./navigation.jsp"></c:import>
@@ -64,7 +65,10 @@
 					</div>
 				</div>
 			</form>
-			<span class="imgpre"><img src="" alt="" id="imgpre"></span>
+			<c:if test="${sessionScope.result == 1}">
+				<c:set var="filepath" value="./resources/${sessionScope.file}"></c:set>
+			</c:if>
+			<div id="haha"><span class="imgpre"><img src="${filepath}" alt="" id="imgpre"></span></div>
 		</div>
 	</div>
 	<div class="n-foot">

@@ -25,7 +25,7 @@
 						cache : false,
 						success : function(result) {
 							loading.hide();
-							location.href = './index.jsp';
+							location.href = './index.do';
 						},
 						error : function(message) {
 							loading.result(message || '登录失败');

@@ -1,7 +1,7 @@
 package com.netease.dao;
 
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -38,9 +38,16 @@ public class ContentDaoImpl implements ContentDao {
 	}
 
 	@Override
-	public ArrayList<Content> getContent() {
+	public List<Object> getContent() {
+		String statement = "com.netease.dao.mapping.getContent";
+		List<Object> contents = session.selectList(statement);
+		return contents;
+	}
+
+	@Override
+	public boolean uploadPic(String path) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 }
