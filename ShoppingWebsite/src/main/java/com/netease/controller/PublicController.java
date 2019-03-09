@@ -10,7 +10,7 @@ import com.netease.entity.Content;
 import com.netease.service.Service;
 import com.netease.service.ServiceImpl;
 
-public class SubmitController implements Controller {
+public class PublicController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {

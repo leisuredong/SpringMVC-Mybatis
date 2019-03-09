@@ -19,8 +19,14 @@
 		class="com.netease.controller.LoginController" />
 	<bean name="/logout.do"
 		class="com.netease.controller.LogoutController" />
-	<bean name="/submit.do"
-		class="com.netease.controller.SubmitController" />
+	<bean name="/public.do"
+		class="com.netease.controller.PublicController" />
+	<bean name="/delete.do"
+		class="com.netease.controller.DeleteController" />
+	<bean name="/show.do"
+		class="com.netease.controller.ShowController" />
+	<bean name="/edit.do"
+		class="com.netease.controller.EditController" />
 
 	<bean id="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

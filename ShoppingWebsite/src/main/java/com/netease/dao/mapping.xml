@@ -19,4 +19,13 @@
 		select *
 		from contents
 	</select>
+	<delete id="deleteContent" parameterType="int">
+		delete from contents
+		where id=#{id}
+	</delete>
+	<select id="getContentById" parameterType="int"
+		resultType="com.netease.entity.Content">
+		select *
+		from contents where id=#{id}
+	</select>
 </mapper>

@@ -43,9 +43,14 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public boolean uploadPic(String path) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteContent(int id) {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.deleteContent(id);
 	}
 
+	@Override
+	public Content getContentById(int id) {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.getContentById(id);
+	}
 }

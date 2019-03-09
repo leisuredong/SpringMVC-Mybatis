@@ -23,7 +23,7 @@
 					layer.hide();
 					loading.show();
 					ajax({
-						url : '/api/delete',
+						url : './delete.do',
 						data : {
 							id : id
 						},

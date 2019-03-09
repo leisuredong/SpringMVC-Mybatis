@@ -15,7 +15,7 @@
 		</div>
 		<div class="n-public">
 			<form class="m-form m-form-ht" id="form" method="post"
-				action="./submit.do" onsubmit="return false;" autocomplete="off">
+				action="./public.do" onsubmit="return false;" autocomplete="off">
 				<div class="fmitem">
 					<label class="fmlab">标题：</label>
 					<div class="fmipt">
@@ -67,8 +67,9 @@
 			</form>
 			<c:if test="${sessionScope.result == 1}">
 				<c:set var="filepath" value="./resources/${sessionScope.file}"></c:set>
+				<% session.removeAttribute("file"); %>
 			</c:if>
-			<div id="haha"><span class="imgpre"><img src="${filepath}" alt="" id="imgpre"></span></div>
+			<span class="imgpre"><img src="${filepath}" alt="" id="imgpre"></span>
 		</div>
 	</div>
 	<div class="n-foot">

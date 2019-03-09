@@ -10,5 +10,7 @@ public interface ContentDao {
 
 	public List<Object> getContent();
 	
-	public boolean uploadPic(String path);
+	public boolean deleteContent(int id);
+	
+	public Content getContentById(int id);
 }

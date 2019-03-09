@@ -45,9 +45,19 @@ public class ContentDaoImpl implements ContentDao {
 	}
 
 	@Override
-	public boolean uploadPic(String path) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteContent(int id) {
+		String statement = "com.netease.dao.mapping.deleteContent";
+		int num = session.delete(statement, id);
+		if (num == 0)
+			return false;
+		session.commit();
+		return true;
 	}
 
+	@Override
+	public Content getContentById(int id) {
+		String statement = "com.netease.dao.mapping.getContentById";
+		Content content = session.selectOne(statement, id);
+		return content;
+	}
 }
