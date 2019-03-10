@@ -1098,7 +1098,7 @@ transform
 	position: relative;
 }
 
-.n-public .ipt:not ([type=file] ){
+.n-public .ipt:not([type=file]){
 	width: 720px;
 }
 
@@ -1119,8 +1119,8 @@ transform
 
 .n-public .imgpre img {
 	display: block;
-	width: 130px;
-	height: 130px;
+	width: 170px;
+	height: 170px;
 	border-radius: 2px;
 	transition: width 0.2s, height 0.2s;
 }
