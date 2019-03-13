@@ -53,4 +53,10 @@ public class ServiceImpl implements Service {
 		contentDao = ContentDaoImpl.getInstance();
 		return contentDao.getContentById(id);
 	}
+
+	@Override
+	public boolean updateContent(Content content) {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.updateContent(content);
+	}
 }

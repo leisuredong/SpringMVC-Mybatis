@@ -26,6 +26,7 @@ public class PublicController implements Controller {
 //		System.out.println("after:"+content.getId());
 		if (result) {
 //			System.out.println("插入成功");
+			modelAndView.addObject("content", content);
 			modelAndView.setViewName("./public-success");
 		} else {
 //			System.out.println("插入失败");

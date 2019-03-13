@@ -13,7 +13,7 @@
 		<div class="n-show f-cb" id="showContent">
 			<div class="img">
 				<c:choose>
-					<c:when test="${content.image != '1'}">
+					<c:when test="${content.image != ''}">
 						<img src="${content.image}" alt="">
 					</c:when>
 					<c:otherwise>

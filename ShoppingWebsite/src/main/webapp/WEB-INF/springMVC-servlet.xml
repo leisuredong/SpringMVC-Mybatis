@@ -27,6 +27,8 @@
 		class="com.netease.controller.ShowController" />
 	<bean name="/edit.do"
 		class="com.netease.controller.EditController" />
+	<bean name="/update.do"
+		class="com.netease.controller.UpdateController" />
 
 	<bean id="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

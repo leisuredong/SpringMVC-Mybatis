@@ -39,7 +39,7 @@
 							style='cursor: pointer' class="link">
 							<div class="img">
 								<c:choose>
-									<c:when test="${content.image != '1'}">
+									<c:when test="${content.image != ''}">
 										<img src="${content.image}" alt="${content.title}">
 									</c:when>
 									<c:otherwise>

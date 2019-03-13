@@ -28,4 +28,15 @@
 		select *
 		from contents where id=#{id}
 	</select>
+	<update id="updateContent"
+		parameterType="com.netease.entity.Content">
+		update contents
+		set contents.title = #{title},
+		contents.summary = #{summary},
+		contents.image = #{image},
+		contents.file = #{file},
+		contents.detail = #{detail},
+		contents.price = #{price}
+		where contents.id = #{id};
+	</update>
 </mapper>

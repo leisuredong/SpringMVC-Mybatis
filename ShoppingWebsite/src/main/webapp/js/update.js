@@ -73,11 +73,22 @@
 				}
 			});
 			form.addEventListener('submit',function(e){
-				if(!isSubmiting && this.check()){
-					price.value = Number(price.value);
-					isSubmiting = true;
-					form.submit();
+				if(!isSubmiting && imageMode == "urlUpload"){
+					uploadInput.value = "";
+					if(this.check()){
+						price.value = Number(price.value);
+						isSubmiting = true;
+						form.submit();
+					}
 				}
+				else if(!isSubmiting && imageMode == "fileUpload"){
+					image.value = "";
+					if(this.check1()){
+						price.value = Number(price.value);
+						isSubmiting = true;
+						form.submit();
+					}
+				}	
 			}.bind(this),false); 
 			[title,summary,image,detail,price].forEach(function(item){
 				item.addEventListener('input',function(e){
@@ -108,6 +119,27 @@
 				item[0].value = value;
 			});
 			if(imageMode == "fileUpload" && !imageUrl){
+				uploadInput.classList.add('z-err');
+				result = false;
+			}
+			return result;
+		},
+		check1:function(){
+			var result = true;
+			[
+				[title,function(value){return value.length<2 || value.length>80}],
+				[summary,function(value){return value.length<2 || value.length>140}],
+				[detail,function(value){return value.length<2 || value.length>1000}],
+				[price,function(value){return value == '' || !Number(value)}]
+			].forEach(function(item){
+				var value = item[0].value.trim();
+				if(item[1](value)){
+					item[0].classList.add('z-err');
+					result = false;
+				}
+				item[0].value = value;
+			});
+			if(!imageUrl){
 				uploadInput.classList.add('z-err');
 				result = false;
 			}

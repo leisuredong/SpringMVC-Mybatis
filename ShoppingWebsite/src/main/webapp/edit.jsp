@@ -7,7 +7,7 @@
 <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
 </head>
 <c:choose>
-	<c:when test="${content.image != '1'}">
+	<c:when test="${content.image != ''}">
 		<body>
 	</c:when>
 	<c:otherwise>
@@ -27,7 +27,7 @@
 	</div>
 	<div class="n-public">
 		<form class="m-form m-form-ht" id="form" method="post"
-			action="./edit.do" onsubmit="return false;" autocomplete="off">
+			action="./update.do?id=${content.id}" onsubmit="return false;" autocomplete="off">
 			<div class="fmitem">
 				<label class="fmlab">标题：</label>
 				<div class="fmipt">
@@ -43,28 +43,13 @@
 				</div>
 			</div>
 
-			<script type="text/javascript">
-				function delAndDis() {
-					var path = document.getElementById("path");
-					path.parentNode.removeChild(path);
-					var change = document.getElementById("change");
-					change.parentNode.removeChild(change);
-					document.getElementById("fileUp").style.visibility = "visible";
-					document.getElementById("upload").style.visibility = "visible";
-				}
-				function dis() {
-					document.getElementById("fileUp").style.visibility = "visible";
-					document.getElementById("upload").style.visibility = "visible";
-				}
-			</script>
-
 			<c:choose>
-				<c:when test="${content.image != '1'}">
+				<c:when test="${content.image != ''}">
 					<div class="fmitem">
 						<label class="fmlab">图片：</label>
 						<div class="fmipt" id="uploadType">
 							<input name="pic" type="radio" value="url" checked="checked">图片地址
-							<input name="pic" type="radio" value="file" onclick="dis()">本地上传
+							<input name="pic" type="radio" value="file">本地上传
 						</div>
 					</div>
 					<div class="fmitem">
@@ -74,10 +59,8 @@
 								value="${content.image}">
 						</div>
 						<div class="fmipt" id="fileUpload" style="display: none;">
-							<input class="u-ipt ipt" name="file" type="file" id="fileUp"
-								style="visibility: hidden;">
-							<button class="u-btn u-btn-primary" id="upload"
-								style="visibility: hidden;">上传</button>
+							<input class="u-ipt ipt" name="file" type="file" id="fileUp">
+							<button class="u-btn u-btn-primary" id="upload">上传</button>
 						</div>
 					</div>
 				</c:when>
@@ -97,14 +80,25 @@
 								value="${content.image}">
 						</div>
 						<div class="fmipt" id="fileUpload" style="display: none;">
-							<input id="path" type="text" value="./resources/${content.file}"
-								style="display: inline-block; box-sizing: border-box; width: 30%; padding: 6px 10px; height: 32px; line-height: 18px; border-radius: 4px; vertical-align: middle; border: 1px solid #d9d9d9; font-size: 14px; background-color: #fff;" />
+							<input id="path" type="text" value="${content.file}" name="filepath" readonly="readonly"
+								style="display: inline-block; box-sizing: border-box; width: 30%; padding: 6px 10px; height: 32px; line-height: 18px; border-radius: 4px; vertical-align: middle; border: 1px solid #d9d9d9; font-size: 14px; background-color: #f2f2f2;" />
+							<%-- <p id="path" style="display: inline-block;">${content.file}</p> --%>
 							<button id="change" class="u-btn u-btn-primary"
-								onclick="delAndDis()">更改</button>
-							<input class="u-ipt ipt" name="file" type="file" id="fileUp"
+								onclick="Change()">更改</button>
+							<input class="u-ipt ipt" type="file" id="fileUp" name="file"
 								style="visibility: hidden;">
 							<button class="u-btn u-btn-primary" id="upload"
 								style="visibility: hidden;">上传</button>
+							<script type="text/javascript">
+								function Change() {
+									var path = document.getElementById("path");
+									path.parentNode.removeChild(path);
+									var change = document.getElementById("change");
+									change.parentNode.removeChild(change);	
+									document.getElementById("fileUp").style.visibility = "visible"; 
+									document.getElementById("upload").style.visibility = "visible";
+								}
+							</script>
 						</div>
 					</div>
 				</c:otherwise>
@@ -125,12 +119,12 @@
 			</div>
 			<div class="fmitem fmitem-nolab fmitem-btn">
 				<div class="fmipt">
-					<button type="submit" class="u-btn u-btn-primary u-btn-lg">保存</button>
+					<input type="submit" class="u-btn u-btn-primary u-btn-lg" value="保存">
 				</div>
 			</div>
 		</form>
 		<c:choose>
-			<c:when test="${content.image != '1'}">
+			<c:when test="${content.image != ''}">
 				<span class="imgpre"><img src="${content.image}" alt=""
 					id="imgpre"></span>
 			</c:when>
@@ -145,6 +139,6 @@
 	<p>作者：网易杭州研究院-质量保障部-董悠然</p>
 </div>
 <script type="text/javascript" src="./js/global.js"></script>
-<script type="text/javascript" src="./js/public.js"></script>
+<script type="text/javascript" src="./js/update.js"></script>
 </body>
 </html>

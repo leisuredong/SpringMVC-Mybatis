@@ -60,4 +60,14 @@ public class ContentDaoImpl implements ContentDao {
 		Content content = session.selectOne(statement, id);
 		return content;
 	}
+
+	@Override
+	public boolean updateContent(Content content) {
+		String statement = "com.netease.dao.mapping.updateContent";
+		int num = session.update(statement, content);
+		if (num == 0)
+			return false;
+		session.commit();
+		return true;
+	}
 }
