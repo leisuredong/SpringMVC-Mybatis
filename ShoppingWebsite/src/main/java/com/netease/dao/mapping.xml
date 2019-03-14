@@ -39,4 +39,25 @@
 		contents.price = #{price}
 		where contents.id = #{id};
 	</update>
+	<insert id="insertItem"
+		parameterType="com.netease.entity.Item" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into items(id, time, number, price)
+		values(#{id}, #{time}, #{number}, #{price})
+	</insert>
+	<update id="updateSold"
+		parameterType="com.netease.entity.Item">
+		update contents
+		set contents.sold = 1
+		where contents.id = #{id};
+	</update>
+	<select id="getItem" resultType="Hashmap">
+		select contents.id,contents.title,contents.image,contents.file,items.time,items.number,items.price
+		from contents,items
+		where contents.id=items.id
+	</select>
+	<select id="getItemPriceById" parameterType="int" resultType="int">
+		select price
+		from items where id=#{id}
+	</select>
 </mapper>

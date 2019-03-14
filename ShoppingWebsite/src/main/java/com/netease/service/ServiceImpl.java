@@ -1,5 +1,6 @@
 package com.netease.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.netease.dao.ContentDao;
@@ -7,6 +8,7 @@ import com.netease.dao.ContentDaoImpl;
 import com.netease.dao.UserDao;
 import com.netease.dao.UserDaoImpl;
 import com.netease.entity.Content;
+import com.netease.entity.Item;
 import com.netease.entity.User;
 
 public class ServiceImpl implements Service {
@@ -58,5 +60,29 @@ public class ServiceImpl implements Service {
 	public boolean updateContent(Content content) {
 		contentDao = ContentDaoImpl.getInstance();
 		return contentDao.updateContent(content);
+	}
+
+	@Override
+	public boolean insertItem(Item item) {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.insertItem(item);
+	}
+
+	@Override
+	public boolean updateSold(int id) {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.updateSold(id);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getItem() {
+		contentDao = ContentDaoImpl.getInstance();
+		return contentDao.getItem();
+	}
+
+	@Override
+	public int getItemPriceById(int id) {
+		contentDao=ContentDaoImpl.getInstance();
+		return contentDao.getItemPriceById(id);
 	}
 }

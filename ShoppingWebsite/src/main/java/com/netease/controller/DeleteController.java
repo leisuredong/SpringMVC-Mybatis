@@ -5,17 +5,20 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 
 import com.netease.service.Service;
 import com.netease.service.ServiceImpl;
 
 import net.sf.json.JSONObject;
 
-public class DeleteController implements Controller {
+@Controller
+public class DeleteController {
 
-	@Override
+	@RequestMapping(value = "/delete.do", method = RequestMethod.POST)
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("Hello DeleteController");
 		int id = Integer.valueOf(request.getParameter("id"));

@@ -14,8 +14,8 @@
 			<c:if test="${sessionScope.currentUser.getUsername()=='buyer'}">
 				<ul class="nav">
 					<li><a href="./index.do">首页</a></li>
-					<li><a href="./account.jsp">账务</a></li>
-					<li><a href="./settleAccount.jsp">购物车</a></li>
+					<li><a href="./order.do">账务</a></li>
+					<li><a href="./shopping-cart.jsp">购物车</a></li>
 				</ul>
 			</c:if>
 			<c:if test="${sessionScope.currentUser.getUsername()=='seller'}">

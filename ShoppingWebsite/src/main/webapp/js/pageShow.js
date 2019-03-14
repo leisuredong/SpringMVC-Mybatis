@@ -3,7 +3,7 @@
 		return document.getElementById(id);
 	}
 	
-	$('plusNum').onclick = function(e){
+	/*$('plusNum').onclick = function(e){
 		e = window.event || e;
 		o = e.srcElement || e.target;
 		var num = $('allNum').textContent;
@@ -21,18 +21,18 @@
 		var num = $('allNum').textContent;
 		num ++;
 		$('allNum').innerHTML = num;
-	};
+	};*/
 	
 	var loading = new Loading();
 	var layer = new Layer();
-
 	
 	$('add').onclick = function(e){
 		var ele = e.target;
 		var id = ele && ele.dataset.id;
 		var title = ele && ele.dataset.title;
 		var price = ele && ele.dataset.price;
-		var num = $('allNum').innerHTML;
+//		var num = $('allNum').innerHTML;
+		var num = 1;
 		var productDetail = {'id':id,'price':price,'title':title,'num':num};
 		var name = 'products';
 		var productList1 = new Array;

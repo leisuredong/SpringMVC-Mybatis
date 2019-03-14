@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
 <html>
 <head>
 <title>Shopping-Town</title>
@@ -37,11 +36,11 @@
 						<c:choose>
 							<c:when test="${content.sold}">
 								<span class="u-btn u-btn-primary z-dis">已购买</span>
-								<span class="buyprice">当时购买价格：¥120.88</span>
+								<span class="buyprice">当时购买价格：¥${price}</span>
 							</c:when>
 							<c:otherwise>
-								<button class="u-btn u-btn-primary" id="add" data-id="197"
-									data-title="22" data-price="22">加入购物车</button>
+								<button class="u-btn u-btn-primary" id="add" data-id="${content.id}"
+									data-title="${content.title}" data-price="${content.price}">加入购物车</button>
 							</c:otherwise>
 						</c:choose>
 					</c:if>

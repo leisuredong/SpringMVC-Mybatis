@@ -1,6 +1,7 @@
 package com.netease.dao;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.netease.entity.Content;
+import com.netease.entity.Item;
 
 public class ContentDaoImpl implements ContentDao {
 	private SqlSession session;
@@ -69,5 +71,39 @@ public class ContentDaoImpl implements ContentDao {
 			return false;
 		session.commit();
 		return true;
+	}
+
+	@Override
+	public boolean insertItem(Item item) {
+		String statement = "com.netease.dao.mapping.insertItem";
+		int num = session.insert(statement, item);
+		if (num == 0)
+			return false;
+		session.commit();
+		return true;
+	}
+
+	@Override
+	public boolean updateSold(int id) {
+		String statement = "com.netease.dao.mapping.updateSold";
+		int num = session.update(statement, id);
+		if (num == 0)
+			return false;
+		session.commit();
+		return true;
+	}
+
+	@Override
+	public List<HashMap<String, String>> getItem() {
+		String statement = "com.netease.dao.mapping.getItem";
+		List<HashMap<String, String>> items = session.selectList(statement);
+		return items;
+	}
+
+	@Override
+	public int getItemPriceById(int id) {
+		String statement = "com.netease.dao.mapping.getItemPriceById";
+		int price = session.selectOne(statement, id);
+		return price;
 	}
 }

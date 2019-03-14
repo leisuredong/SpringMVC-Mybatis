@@ -13,22 +13,19 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-	<bean name="/index.do"
-		class="com.netease.controller.IndexController" />
-	<bean name="/login.do"
-		class="com.netease.controller.LoginController" />
-	<bean name="/logout.do"
-		class="com.netease.controller.LogoutController" />
-	<bean name="/public.do"
-		class="com.netease.controller.PublicController" />
-	<bean name="/delete.do"
-		class="com.netease.controller.DeleteController" />
-	<bean name="/show.do"
-		class="com.netease.controller.ShowController" />
-	<bean name="/edit.do"
-		class="com.netease.controller.EditController" />
-	<bean name="/update.do"
-		class="com.netease.controller.UpdateController" />
+	<bean id="HandlerMapping"
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jacksonMessageConverter" />
+			</list>
+		</property>
+	</bean>
 
 	<bean id="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

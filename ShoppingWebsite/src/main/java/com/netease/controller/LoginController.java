@@ -5,8 +5,10 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 
 import com.netease.entity.User;
 import com.netease.service.Service;
@@ -15,8 +17,9 @@ import com.netease.util.MD5;
 
 import net.sf.json.JSONObject;
 
-public class LoginController implements Controller {
-
+@Controller
+public class LoginController {
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("Hello LoginController!");
 

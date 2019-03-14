@@ -118,10 +118,10 @@
 				}
 				item[0].value = value;
 			});
-			if(imageMode == "fileUpload" && !imageUrl){
+			/*if(imageMode == "fileUpload" && !imageUrl){
 				uploadInput.classList.add('z-err');
 				result = false;
-			}
+			}*/
 			return result;
 		},
 		check1:function(){
@@ -139,10 +139,6 @@
 				}
 				item[0].value = value;
 			});
-			if(!imageUrl){
-				uploadInput.classList.add('z-err');
-				result = false;
-			}
 			return result;
 		}
 	};

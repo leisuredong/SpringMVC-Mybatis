@@ -3,16 +3,19 @@ package com.netease.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 
 import com.netease.entity.Content;
 import com.netease.service.Service;
 import com.netease.service.ServiceImpl;
 
-public class PublicController implements Controller {
+@Controller
+public class PublicController {
 
-	@Override
+	@RequestMapping(value = "/public.do", method = RequestMethod.POST)
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		System.out.println("Hello SubmitController");
 //		System.out.println(request.getParameter("file"));
