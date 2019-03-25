@@ -5,20 +5,14 @@ import java.io.InputStream;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.stereotype.Repository;
 
 import com.netease.entity.User;
 
+@Repository
 public class UserDaoImpl implements UserDao {
 
 	private SqlSession session;
-	public static UserDaoImpl userDaoImpl;
-
-	public static UserDaoImpl getInstance() {
-		if (userDaoImpl == null)
-			return new UserDaoImpl();
-		else
-			return userDaoImpl;
-	}
 
 	public UserDaoImpl() {
 		String resource = "com/netease/dao/mybatis.xml";

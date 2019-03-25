@@ -6,21 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.netease.entity.Content;
 import com.netease.service.Service;
-import com.netease.service.ServiceImpl;
 
 @Controller
 public class UpdateController {
+	@Autowired
+	private Service service;
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-//		System.out.println("image:" + request.getParameter("image"));
-//		System.out.println("file:" + request.getParameter("file"));
-//		System.out.println("filepath:" + request.getParameter("filepath"));
 
 		Content content = new Content();
 		content.setTitle(request.getParameter("title"));
@@ -40,9 +39,7 @@ public class UpdateController {
 		}
 		content.setDetail(request.getParameter("detail"));
 		content.setPrice(Integer.valueOf(request.getParameter("price")));
-//		System.out.println(content);
 
-		Service service = ServiceImpl.getInstance();
 		int id = Integer.valueOf(request.getParameter("id"));
 		content.setId(id);
 		boolean result = service.updateContent(content);

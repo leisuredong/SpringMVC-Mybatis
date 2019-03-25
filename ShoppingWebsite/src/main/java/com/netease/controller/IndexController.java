@@ -1,5 +1,6 @@
 package com.netease.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.netease.entity.Content;
 import com.netease.service.Service;
-import com.netease.service.ServiceImpl;
 
 @Controller
 public class IndexController {
+	@Autowired
+	private Service service;
 
 	@RequestMapping(value = "/index.do", method = RequestMethod.GET)
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		Service service = ServiceImpl.getInstance();
 		List<Object> contents = service.getContent();
 		String no_buy = request.getParameter("no-buy");
 		if (no_buy != null && Integer.valueOf(request.getParameter("no-buy")) == 1) {

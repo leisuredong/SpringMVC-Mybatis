@@ -1,27 +1,25 @@
 package com.netease.controller;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.netease.entity.User;
 import com.netease.service.Service;
-import com.netease.service.ServiceImpl;
 import com.netease.util.MD5;
-
-import net.sf.json.JSONObject;
 
 @Controller
 public class LoginController {
+	@Autowired
+	private Service service;
+
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		System.out.println("Hello LoginController!");
+	public ModelAndView handleAndPrint(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		ModelAndView modelAndView = new ModelAndView();
 
@@ -29,7 +27,6 @@ public class LoginController {
 		String password = request.getParameter("password");
 
 		User user = new User();
-		Service service = ServiceImpl.getInstance();
 
 		user = service.getUser(1);
 		String username_db = user.getUsername();
@@ -52,15 +49,6 @@ public class LoginController {
 			}
 		}
 
-		JSONObject json = JSONObject.fromObject(modelAndView.getModel());
-		String strJson = json.toString();
-//		System.out.println(strJson);
-		PrintWriter writer = response.getWriter();
-		response.setContentType("application/json;charset=utf-8");
-		writer.print(strJson);
-		writer.close();
-
-//		System.out.println("Bye LoginController!");
-		return null;
+		return modelAndView;
 	}
 }

@@ -7,20 +7,14 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.stereotype.Repository;
 
 import com.netease.entity.Content;
 import com.netease.entity.Item;
 
+@Repository
 public class ContentDaoImpl implements ContentDao {
 	private SqlSession session;
-	public static ContentDaoImpl contentDaoImpl;
-
-	public static ContentDaoImpl getInstance() {
-		if (contentDaoImpl == null)
-			return new ContentDaoImpl();
-		else
-			return contentDaoImpl;
-	}
 
 	public ContentDaoImpl() {
 		String resource = "com/netease/dao/mybatis.xml";
